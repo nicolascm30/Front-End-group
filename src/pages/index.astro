@@ -63,7 +63,8 @@ const { categories, items: services } = servicesData
         {
           categories.map((cat, i) => (
             <button
-              class={`pb-1 text-xs font-semibold transition ${i === 0 ? "border-b-2 border-gray-800 text-gray-900" : "text-gray-400 hover:text-gray-600"}`}
+              class={`category-btn pb-1 text-xs font-semibold transition ${i === 0 ? "border-b-2 border-gray-800 text-gray-900" : "text-gray-400 hover:text-gray-600"}`}
+              data-category={cat}
             >
               {cat}
             </button>
@@ -71,58 +72,99 @@ const { categories, items: services } = servicesData
         }
       </div>
 
-      <div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+      <div id="services-grid" class="grid grid-cols-2 gap-4 md:grid-cols-4">
         {
           services.map((service) => (
-            <div class="relative overflow-hidden rounded-xl" style="background: linear-gradient(145deg, #1e2d5a 0%, #3a4f8a 100%);">
+            <div
+              class="service-card relative overflow-hidden rounded-xl"
+              style="background: linear-gradient(145deg, #1e2d5a 0%, #3a4f8a 100%);"
+              data-id={service.id}
+              data-category={service.category}
+            >
               <img src={service.image} alt={service.alt} />
               <div class="absolute inset-0 bg-linear-to-b from-[#1e2d5a] to-transparent p-8 text-white">
                 <span class="text-xs font-medium">{service.category}</span>
                 <p class="text-xl font-bold">{service.title}</p>
               </div>
+              <button
+                class="fav-btn absolute top-3 right-3 rounded-full bg-white/20 p-1.5 backdrop-blur-sm transition hover:bg-white/40"
+                data-id={service.id}
+                aria-label="Add to favorites"
+              >
+                <svg
+                  class="fav-icon"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                </svg>
+              </button>
             </div>
           ))
         }
+      </div>
+
+      <div id="favorites-section" class="mt-10 hidden">
+        <h3 class="mb-4 text-center text-sm font-semibold tracking-widest text-gray-500 uppercase">Your Favorites</h3>
+        <div id="favorites-grid" class="grid grid-cols-2 gap-4 md:grid-cols-4"></div>
       </div>
     </div>
   </section>
 
   <section class="bg-white px-6 pt-16">
-    <div class="mx-auto max-w-2xl space-y-6 shadow-md">
+    <div class="mx-auto max-w-2xl space-y-6">
       <div class="space-y-2 text-center">
         <h2 class="text-3xl font-bold text-[#6D758F]">Let us know<br />what you think!</h2>
         <p class="mx-auto max-w-sm text-sm font-semibold text-gray-500">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
         </p>
       </div>
-      <form class="space-y-4 overflow-hidden rounded-xl border border-slate-200 p-8">
+      <form id="contact-form" class="space-y-4 overflow-hidden rounded-xl border border-slate-200 p-8" novalidate>
         <div class="space-y-1">
-          <label class="text-xs font-semibold text-gray-600">First Name</label>
+          <label for="contact-name" class="text-xs font-semibold text-gray-600">First Name</label>
           <input
+            id="contact-name"
             type="text"
             placeholder="First name"
             class="w-full rounded border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-[#1e2d5a]/30 focus:outline-none"
           />
+          <span id="error-name" class="hidden text-xs text-red-500">Please enter your name (at least 2 characters).</span>
         </div>
         <div class="space-y-1">
-          <label class="text-xs font-semibold text-gray-600">Email</label>
+          <label for="contact-email" class="text-xs font-semibold text-gray-600">Email</label>
           <input
+            id="contact-email"
             type="email"
             placeholder="your@email.com"
             class="w-full rounded border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-[#1e2d5a]/30 focus:outline-none"
           />
+          <span id="error-email" class="hidden text-xs text-red-500">Please enter a valid email address.</span>
         </div>
         <div class="space-y-1">
-          <label class="text-xs font-semibold text-gray-600">Phone</label>
+          <label for="contact-phone" class="text-xs font-semibold text-gray-600">Phone</label>
           <input
-            type="tel"
-            placeholder="+1 (000) 000-0000"
+            id="contact-phone"
+            type="text"
+            inputmode="numeric"
+            placeholder="(000) 000-0000"
+            maxlength="14"
             class="w-full rounded border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-[#1e2d5a]/30 focus:outline-none"
           />
+          <span id="error-phone" class="hidden text-xs text-red-500">Please enter a valid 10-digit phone number.</span>
         </div>
-        <button type="submit" class="rounded bg-[#1e2d5a] px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-[#16224a]">
-          Send message
-        </button>
+        <div class="flex items-center gap-4">
+          <button type="submit" class="rounded bg-[#1e2d5a] px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-[#16224a]">
+            Send message
+          </button>
+          <span id="contact-success" class="hidden text-sm font-semibold text-green-600">Message sent successfully!</span>
+        </div>
       </form>
     </div>
   </section>
@@ -160,18 +202,25 @@ const { categories, items: services } = servicesData
     <div class="mx-auto max-w-2xl space-y-5 text-center">
       <h2 class="text-2xl font-bold text-gray-900">Get the latest news and updates</h2>
       <p class="text-sm text-gray-500">Subscribe to our newsletter and never miss an update. We promise no spam.</p>
-      <form class="mx-auto flex max-w-md flex-col gap-3 sm:flex-row">
-        <input
-          type="email"
-          placeholder="Enter your email"
-          class="flex-1 rounded border border-gray-300 bg-white px-4 py-2.5 text-sm focus:ring-2 focus:ring-[#1e2d5a]/30 focus:outline-none"
-        />
-        <button
-          type="submit"
-          class="rounded bg-[#1e2d5a] px-5 py-2.5 text-sm font-semibold whitespace-nowrap text-white transition hover:bg-[#16224a]"
-        >
-          Subscribe
-        </button>
+      <form id="newsletter-form" class="mx-auto flex max-w-md flex-col gap-3 sm:flex-row" novalidate>
+        <div class="flex flex-1 flex-col gap-1">
+          <input
+            id="newsletter-email"
+            type="email"
+            placeholder="Enter your email"
+            class="flex-1 rounded border border-gray-300 bg-white px-4 py-2.5 text-sm focus:ring-2 focus:ring-[#1e2d5a]/30 focus:outline-none"
+          />
+          <span id="error-newsletter" class="hidden text-left text-xs text-red-500">Please enter a valid email address.</span>
+        </div>
+        <div class="flex flex-col items-start gap-1">
+          <button
+            type="submit"
+            class="rounded bg-[#1e2d5a] px-5 py-2.5 text-sm font-semibold whitespace-nowrap text-white transition hover:bg-[#16224a]"
+          >
+            Subscribe
+          </button>
+          <span id="newsletter-success" class="hidden text-xs font-semibold text-green-600">Subscribed!</span>
+        </div>
       </form>
     </div>
   </section>
@@ -243,7 +292,6 @@ const { categories, items: services } = servicesData
             <circle cx="4" cy="4" r="2"></circle>
           </svg>
         </a>
-        <!-- YouTube -->
         <a href="#" class="rounded-lg bg-[#F1F3F7] p-2 transition hover:bg-gray-200">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -274,3 +322,217 @@ const { categories, items: services } = servicesData
     </div>
   </footer>
 </Layout>
+
+<script>
+  // ── FAVORITES ──────────────────────────────────────────────────────────────
+
+  const LS_KEY = "favServices"
+
+  function getFavorites(): number[] {
+    try {
+      return JSON.parse(localStorage.getItem(LS_KEY) ?? "[]")
+    } catch {
+      return []
+    }
+  }
+
+  function saveFavorites(ids: number[]): void {
+    localStorage.setItem(LS_KEY, JSON.stringify(ids))
+  }
+
+  function isFavorite(id: number): boolean {
+    return getFavorites().includes(id)
+  }
+
+  function setFavButtonState(btn: HTMLButtonElement, active: boolean): void {
+    const icon = btn.querySelector(".fav-icon") as SVGElement | null
+    if (!icon) return
+    icon.setAttribute("fill", active ? "white" : "none")
+    btn.setAttribute("aria-label", active ? "Remove from favorites" : "Add to favorites")
+  }
+
+  function buildFavoritesGrid(): void {
+    const section = document.getElementById("favorites-section")
+    const grid = document.getElementById("favorites-grid")
+    if (!section || !grid) return
+
+    const favIds = getFavorites()
+    const cards = document.querySelectorAll<HTMLElement>(".service-card")
+
+    grid.innerHTML = ""
+
+    favIds.forEach((id) => {
+      const original = Array.from(cards).find((c) => Number(c.dataset.id) === id)
+      if (!original) return
+
+      const clone = original.cloneNode(true) as HTMLElement
+      // Wire up the heart button on the clone
+      const cloneBtn = clone.querySelector<HTMLButtonElement>(".fav-btn")
+      if (cloneBtn) {
+        setFavButtonState(cloneBtn, true)
+        cloneBtn.addEventListener("click", (e) => {
+          e.stopPropagation()
+          toggleFavorite(id)
+        })
+      }
+      grid.appendChild(clone)
+    })
+
+    section.classList.toggle("hidden", favIds.length === 0)
+  }
+
+  function toggleFavorite(id: number): void {
+    let favs = getFavorites()
+    if (favs.includes(id)) {
+      favs = favs.filter((f) => f !== id)
+    } else {
+      favs.push(id)
+    }
+    saveFavorites(favs)
+
+    // Update all main-grid heart buttons for this id
+    document.querySelectorAll<HTMLButtonElement>(`.fav-btn[data-id="${id}"]`).forEach((btn) => {
+      setFavButtonState(btn, favs.includes(id))
+    })
+
+    buildFavoritesGrid()
+  }
+
+  // Init favorites on page load
+  document.querySelectorAll<HTMLButtonElement>(".service-card .fav-btn").forEach((btn) => {
+    const id = Number(btn.dataset.id)
+    setFavButtonState(btn, isFavorite(id))
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation()
+      toggleFavorite(id)
+    })
+  })
+
+  buildFavoritesGrid()
+
+  // ── CATEGORY FILTER ────────────────────────────────────────────────────────
+
+  document.querySelectorAll<HTMLButtonElement>(".category-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const selected = btn.dataset.category ?? "All"
+
+      document.querySelectorAll<HTMLButtonElement>(".category-btn").forEach((b) => {
+        b.classList.remove("border-b-2", "border-gray-800", "text-gray-900")
+        b.classList.add("text-gray-400")
+      })
+      btn.classList.add("border-b-2", "border-gray-800", "text-gray-900")
+      btn.classList.remove("text-gray-400")
+
+      document.querySelectorAll<HTMLElement>(".service-card").forEach((card) => {
+        const show = selected === "All" || card.dataset.category === selected
+        card.style.display = show ? "" : "none"
+      })
+    })
+  })
+
+  // ── HELPERS ────────────────────────────────────────────────────────────────
+
+  function isValidEmail(value: string): boolean {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value.trim())
+  }
+
+  function isValidPhone(value: string): boolean {
+    return value.replace(/\D/g, "").length === 10
+  }
+
+  function setFieldError(inputId: string, errorId: string, hasError: boolean): void {
+    const input = document.getElementById(inputId) as HTMLInputElement | null
+    const error = document.getElementById(errorId)
+    if (!input || !error) return
+
+    if (hasError) {
+      input.classList.add("border-red-400", "focus:ring-red-300")
+      input.classList.remove("border-gray-300")
+      error.classList.remove("hidden")
+    } else {
+      input.classList.remove("border-red-400", "focus:ring-red-300")
+      input.classList.add("border-gray-300")
+      error.classList.add("hidden")
+    }
+  }
+
+  // Clear field error on input
+  function clearOnInput(inputId: string, errorId: string): void {
+    const input = document.getElementById(inputId)
+    input?.addEventListener("input", () => setFieldError(inputId, errorId, false))
+  }
+
+  clearOnInput("contact-name", "error-name")
+  clearOnInput("contact-email", "error-email")
+  clearOnInput("newsletter-email", "error-newsletter")
+
+  // Phone auto-format → (xxx) xxx-xxxx
+  const phoneInput = document.getElementById("contact-phone") as HTMLInputElement | null
+  phoneInput?.addEventListener("input", () => {
+    setFieldError("contact-phone", "error-phone", false)
+    const digits = phoneInput.value.replace(/\D/g, "").slice(0, 10)
+    if (digits.length === 0) {
+      phoneInput.value = ""
+      return
+    }
+    if (digits.length <= 3) {
+      phoneInput.value = `(${digits}`
+      return
+    }
+    if (digits.length <= 6) {
+      phoneInput.value = `(${digits.slice(0, 3)}) ${digits.slice(3)}`
+      return
+    }
+    phoneInput.value = `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`
+  })
+
+  // ── CONTACT FORM VALIDATION ────────────────────────────────────────────────
+
+  document.getElementById("contact-form")?.addEventListener("submit", (e) => {
+    e.preventDefault()
+
+    const name = (document.getElementById("contact-name") as HTMLInputElement).value.trim()
+    const email = (document.getElementById("contact-email") as HTMLInputElement).value.trim()
+    const phone = (document.getElementById("contact-phone") as HTMLInputElement).value.trim()
+
+    const nameErr = name.length < 2
+    const emailErr = !isValidEmail(email)
+    const phoneErr = phone.length > 0 && !isValidPhone(phone)
+
+    setFieldError("contact-name", "error-name", nameErr)
+    setFieldError("contact-email", "error-email", emailErr)
+    setFieldError("contact-phone", "error-phone", phoneErr)
+
+    if (nameErr || emailErr || phoneErr) return
+
+    const success = document.getElementById("contact-success")
+    if (success) {
+      success.classList.remove("hidden")
+      setTimeout(() => success.classList.add("hidden"), 3000)
+    }
+    ;(e.target as HTMLFormElement).reset()
+    setFieldError("contact-name", "error-name", false)
+    setFieldError("contact-email", "error-email", false)
+    setFieldError("contact-phone", "error-phone", false)
+  })
+
+  // ── NEWSLETTER FORM VALIDATION ─────────────────────────────────────────────
+
+  document.getElementById("newsletter-form")?.addEventListener("submit", (e) => {
+    e.preventDefault()
+
+    const email = (document.getElementById("newsletter-email") as HTMLInputElement).value.trim()
+    const hasError = !isValidEmail(email)
+
+    setFieldError("newsletter-email", "error-newsletter", hasError)
+    if (hasError) return
+
+    const success = document.getElementById("newsletter-success")
+    if (success) {
+      success.classList.remove("hidden")
+      setTimeout(() => success.classList.add("hidden"), 3000)
+    }
+    ;(e.target as HTMLFormElement).reset()
+    setFieldError("newsletter-email", "error-newsletter", false)
+  })
+</script>
