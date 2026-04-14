@@ -1,0 +1,33 @@
+{
+  "categories": ["All", "Design", "Development", "Marketing"],
+  "items": [
+    {
+      "id": 1,
+      "category": "Development",
+      "title": "Web Development",
+      "image": "https://placehold.co/260x365",
+      "alt": "Web Development service"
+    },
+    {
+      "id": 2,
+      "category": "Design",
+      "title": "UI/UX Design",
+      "image": "https://placehold.co/260x365",
+      "alt": "UI/UX Design service"
+    },
+    {
+      "id": 3,
+      "category": "Marketing",
+      "title": "Digital Marketing",
+      "image": "https://placehold.co/260x365",
+      "alt": "Digital Marketing service"
+    },
+    {
+      "id": 4,
+      "category": "Development",
+      "title": "Mobile Apps",
+      "image": "https://placehold.co/260x365",
+      "alt": "Mobile Apps service"
+    }
+  ]
+}
