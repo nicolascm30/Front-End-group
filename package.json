@@ -2,8 +2,9 @@
   "name": "mockup",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@10.28.2",
   "engines": {
-    "node": ">=22.12.0"
+    "node": "22.x"
   },
   "scripts": {
     "dev": "astro dev",

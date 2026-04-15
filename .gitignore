@@ -15,7 +15,6 @@ pnpm-debug.log*
 
 # Package distribution files
 package-lock.json
-pnpm-lock.yaml
 
 # environment variables
 .env
@@ -26,8 +25,6 @@ pnpm-lock.yaml
 
 # jetbrains setting folder
 .idea/
-
-pnpm-lock.yaml
 
 # Amplify files 
 .amplify-hosting
