@@ -11,55 +11,65 @@ const { categories, items: services } = servicesData
 <Layout>
   <Navegation />
 
-  <section class="flex h-[90dvh] items-center justify-center bg-white px-6 py-16">
-    <div class="flex h-full w-full max-w-[90%] flex-col items-center justify-between gap-10 md:flex-row">
-      <div class="space-y-6">
-        <h1 class="text-4xl leading-tight font-bold text-gray-900 2xl:text-6xl">
-          Discover the key to<br />grow your business
+  <!-- HERO -->
+  <section class='flex h-[90dvh] items-center justify-center bg-white px-6 py-16'>
+    <div class='flex h-full w-full max-w-[90%] flex-col items-center justify-between gap-10 md:flex-row'>
+      <div class='space-y-6'>
+        <h1 class='text-4xl leading-tight font-bold text-gray-900 2xl:text-6xl'>
+          Habla con confianza<br />en cualquier idioma
         </h1>
-        <p class="max-w-sm text-sm text-gray-500 2xl:text-lg">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        <p class='max-w-sm text-sm text-gray-500 2xl:text-lg'>
+          Clases en vivo, práctica con inteligencia artificial y profesores nativos certificados — todo en una plataforma diseñada para un progreso
+          real y duradero.
         </p>
-        <div class="flex gap-3">
+        <div class='flex gap-3'>
           <a
-            href="#"
-            class="flex items-center gap-1 rounded-lg bg-[#1e2d5a] px-5 py-2.5 text-sm font-semibold text-nowrap whitespace-nowrap text-white transition hover:bg-[#16224a]"
+            href='#cursos'
+            class='flex items-center gap-1 rounded-lg bg-[#1e2d5a] px-5 py-2.5 text-sm font-semibold text-nowrap whitespace-nowrap text-white transition hover:bg-[#16224a]'
           >
-            Get started <ArrowRight /></a
+            Empieza gratis <ArrowRight /></a
           >
-          <a
-            href="#"
-            class="rounded-lg border border-gray-400 bg-[#E1E4ED] px-5 py-2.5 text-sm font-semibold text-nowrap whitespace-nowrap text-gray-700 transition hover:bg-gray-100"
+          <button
+            id='demo-btn'
+            class='flex items-center gap-2 rounded-lg border border-gray-400 bg-[#E1E4ED] px-5 py-2.5 text-sm font-semibold text-nowrap whitespace-nowrap text-gray-700 transition hover:bg-gray-100'
           >
-            Learn more
-          </a>
+            <svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='currentColor' stroke='none'>
+              <polygon points='5 3 19 12 5 21 5 3'></polygon>
+            </svg>
+            Ver demostración
+          </button>
         </div>
       </div>
-      <div class="relative aspect-square w-full max-w-lg">
+      <div class='relative aspect-square w-full max-w-lg'>
         <img
-          src="https://placehold.co/300x400"
-          alt="Illustration of business growth"
-          class="absolute bottom-0 left-0 max-w-100 rounded-lg object-cover shadow-lg"
+          src='/group_banner.png'
+          width='300'
+          height='400'
+          alt='Clases de idiomas en línea en vivo'
+          class='absolute bottom-0 left-0 max-w-100 rounded-lg object-cover shadow-lg'
         />
         <img
-          src="https://placehold.co/300x400"
-          alt="Illustration of business growth"
-          class="absolute top-0 right-0 max-w-100 rounded-lg object-cover shadow-lg"
+          src='/woman_banner.png'
+          width='300'
+          height='400'
+          alt='Tutores nativos certificados'
+          class='absolute top-0 right-0 max-w-100 rounded-lg border-4 border-white object-cover shadow-xl'
         />
       </div>
     </div>
   </section>
 
-  <section class="bg-[#F5F5F5] px-6 py-16">
-    <div class="mx-auto max-w-5xl">
-      <div class="mb-8 space-y-3 text-center">
-        <h2 class="text-3xl font-bold text-gray-900">Highly effective solutions</h2>
-        <p class="mx-auto max-w-md text-sm text-gray-500">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+  <!-- CURSOS -->
+  <section id='cursos' class='bg-[#F5F5F5] px-6 py-16'>
+    <div class='mx-auto max-w-5xl'>
+      <div class='mb-8 space-y-3 text-center'>
+        <h2 class='text-3xl font-bold text-gray-900'>Explora nuestros programas de idiomas</h2>
+        <p class='mx-auto max-w-md text-sm text-gray-500'>
+          De principiante a avanzado — encuentra el curso que se adapta a tus metas, horario y estilo de aprendizaje.
         </p>
       </div>
 
-      <div class="mb-8 flex justify-center gap-8">
+      <div class='mb-8 flex justify-center gap-8'>
         {
           categories.map((cat, i) => (
             <button
@@ -72,38 +82,53 @@ const { categories, items: services } = servicesData
         }
       </div>
 
-      <div id="services-grid" class="grid grid-cols-2 gap-4 md:grid-cols-4">
+      <div id='services-grid' class='grid grid-cols-2 gap-4 md:grid-cols-4'>
         {
           services.map((service) => (
             <div
-              class="service-card relative overflow-hidden rounded-xl"
-              style="background: linear-gradient(145deg, #1e2d5a 0%, #3a4f8a 100%);"
+              class='service-card group relative overflow-hidden rounded-xl'
+              style='background: linear-gradient(145deg, #1e2d5a 0%, #3a4f8a 100%);'
               data-id={service.id}
               data-category={service.category}
+              data-title={service.title}
+              data-level={service.level}
+              data-duration={service.duration}
+              data-description={service.description}
             >
-              <img src={service.image} alt={service.alt} />
-              <div class="absolute inset-0 bg-linear-to-b from-[#1e2d5a] to-transparent p-8 text-white">
-                <span class="text-xs font-medium">{service.category}</span>
-                <p class="text-xl font-bold">{service.title}</p>
+              <img src={service.image} alt={service.alt} class='opacity-20' />
+              <div class='absolute inset-0 flex flex-col justify-between bg-linear-to-b from-[#1e2d5a]/90 via-[#1e2d5a]/50 to-[#1e2d5a]/80 p-5 text-white'>
+                <div>
+                  <span class='text-xs font-medium tracking-wide uppercase opacity-75'>{service.category}</span>
+                  <p class='mt-1 text-lg leading-tight font-bold'>{service.title}</p>
+                  <p class='mt-1 text-xs opacity-60'>
+                    {service.level} · {service.duration}
+                  </p>
+                </div>
+                <button
+                  class='enroll-btn mt-4 w-full rounded-lg bg-white/20 px-4 py-2 text-xs font-semibold backdrop-blur-sm transition hover:bg-white/40'
+                  data-id={service.id}
+                >
+                  Inscribirme →
+                </button>
               </div>
               <button
-                class="fav-btn absolute top-3 right-3 rounded-full bg-white/20 p-1.5 backdrop-blur-sm transition hover:bg-white/40"
+                class='fav-btn absolute top-3 right-3 rounded-full bg-white/20 p-1.5 backdrop-blur-sm transition hover:bg-white/40'
                 data-id={service.id}
-                aria-label="Add to favorites"
+                aria-label='Agregar a favoritos'
               >
                 <svg
-                  class="fav-icon"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="white"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  class='fav-icon'
+                  xmlns='http://www.w3.org/2000/svg'
+                  width='16'
+                  height='16'
+                  viewBox='0 0 24 24'
+                  fill='none'
+                  stroke='white'
+                  stroke-width='2'
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
                 >
-                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                  <path d='M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z' />
                 </svg>
               </button>
             </div>
@@ -111,220 +136,384 @@ const { categories, items: services } = servicesData
         }
       </div>
 
-      <div id="favorites-section" class="mt-10 hidden">
-        <h3 class="mb-4 text-center text-sm font-semibold tracking-widest text-gray-500 uppercase">Your Favorites</h3>
-        <div id="favorites-grid" class="grid grid-cols-2 gap-4 md:grid-cols-4"></div>
+      <div id='favorites-section' class='mt-10 hidden'>
+        <h3 class='mb-4 text-center text-sm font-semibold tracking-widest text-gray-500 uppercase'>Tus cursos guardados</h3>
+        <div id='favorites-grid' class='grid grid-cols-2 gap-4 md:grid-cols-4'></div>
       </div>
     </div>
   </section>
 
-  <section class="bg-white px-6 pt-16">
-    <div class="mx-auto max-w-2xl space-y-6">
-      <div class="space-y-2 text-center">
-        <h2 class="text-3xl font-bold text-[#6D758F]">Let us know<br />what you think!</h2>
-        <p class="mx-auto max-w-sm text-sm font-semibold text-gray-500">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.
+  <!-- FORMULARIO DE CONTACTO -->
+  <section class='bg-white px-6 pt-16'>
+    <div class='mx-auto max-w-2xl space-y-6'>
+      <div class='space-y-2 text-center'>
+        <h2 class='text-3xl font-bold text-[#6D758F]'>¿Listo para comenzar<br />tu camino?</h2>
+        <p class='mx-auto max-w-sm text-sm font-semibold text-gray-500'>
+          Déjanos tus datos y un asesor de aprendizaje se pondrá en contacto contigo en menos de 24 horas para diseñar tu plan personalizado.
         </p>
       </div>
-      <form id="contact-form" class="space-y-4 overflow-hidden rounded-xl border border-slate-200 p-8" novalidate>
-        <div class="space-y-1">
-          <label for="contact-name" class="text-xs font-semibold text-gray-600">First Name</label>
+      <form id='contact-form' class='space-y-4 overflow-hidden rounded-xl border border-slate-200 p-8' novalidate>
+        <div class='space-y-1'>
+          <label for='contact-name' class='text-xs font-semibold text-gray-600'>Nombre</label>
           <input
-            id="contact-name"
-            type="text"
-            placeholder="First name"
-            class="w-full rounded border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-[#1e2d5a]/30 focus:outline-none"
+            id='contact-name'
+            type='text'
+            placeholder='Tu nombre'
+            class='w-full rounded border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-[#1e2d5a]/30 focus:outline-none'
           />
-          <span id="error-name" class="hidden text-xs text-red-500">Please enter your name (at least 2 characters).</span>
+          <span id='error-name' class='hidden text-xs text-red-500'>Por favor ingresa tu nombre (mínimo 2 caracteres).</span>
         </div>
-        <div class="space-y-1">
-          <label for="contact-email" class="text-xs font-semibold text-gray-600">Email</label>
+        <div class='space-y-1'>
+          <label for='contact-email' class='text-xs font-semibold text-gray-600'>Correo electrónico</label>
           <input
-            id="contact-email"
-            type="email"
-            placeholder="your@email.com"
-            class="w-full rounded border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-[#1e2d5a]/30 focus:outline-none"
+            id='contact-email'
+            type='email'
+            placeholder='tu@correo.com'
+            class='w-full rounded border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-[#1e2d5a]/30 focus:outline-none'
           />
-          <span id="error-email" class="hidden text-xs text-red-500">Please enter a valid email address.</span>
+          <span id='error-email' class='hidden text-xs text-red-500'>Por favor ingresa un correo electrónico válido.</span>
         </div>
-        <div class="space-y-1">
-          <label for="contact-phone" class="text-xs font-semibold text-gray-600">Phone</label>
+        <div class='space-y-1'>
+          <label for='contact-phone' class='text-xs font-semibold text-gray-600'>Teléfono</label>
           <input
-            id="contact-phone"
-            type="text"
-            inputmode="numeric"
-            placeholder="(000) 000-0000"
-            maxlength="14"
-            class="w-full rounded border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-[#1e2d5a]/30 focus:outline-none"
+            id='contact-phone'
+            type='text'
+            inputmode='numeric'
+            placeholder='(000) 000-0000'
+            maxlength='14'
+            class='w-full rounded border border-gray-300 bg-white px-3 py-2 text-sm focus:ring-2 focus:ring-[#1e2d5a]/30 focus:outline-none'
           />
-          <span id="error-phone" class="hidden text-xs text-red-500">Please enter a valid 10-digit phone number.</span>
+          <span id='error-phone' class='hidden text-xs text-red-500'>Por favor ingresa un número de teléfono válido de 10 dígitos.</span>
         </div>
-        <div class="flex items-center gap-4">
-          <button type="submit" class="rounded bg-[#1e2d5a] px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-[#16224a]">
-            Send message
+        <div class='flex items-center gap-4'>
+          <button type='submit' class='rounded bg-[#1e2d5a] px-6 py-2.5 text-sm font-semibold text-white transition hover:bg-[#16224a]'>
+            Hablar con un asesor
           </button>
-          <span id="contact-success" class="hidden text-sm font-semibold text-green-600">Message sent successfully!</span>
+          <span id='contact-success' class='hidden text-sm font-semibold text-green-600'>¡Te contactaremos en menos de 24 horas!</span>
         </div>
       </form>
     </div>
   </section>
 
-  <section class="mx-auto max-w-5xl bg-white px-6 py-14">
-    <div class="mx-auto flex-col items-center gap-10 md:flex-row">
-      <div class="flex-1 space-y-4 text-center">
-        <h2 class="text-2xl font-bold text-gray-900">Want to reach us<br />directly?</h2>
-        <p class="mx-auto max-w-xs text-sm text-gray-500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  <!-- CONTACTO DIRECTO -->
+  <section class='mx-auto max-w-5xl bg-white px-6 py-14'>
+    <div class='mx-auto flex-col items-center gap-10 md:flex-row'>
+      <div class='flex-1 space-y-4 text-center'>
+        <h2 class='text-2xl font-bold text-gray-900'>Habla directamente<br />con un asesor</h2>
+        <p class='mx-auto max-w-xs text-sm text-gray-500'>¿Tienes dudas sobre qué programa se adapta mejor a ti? Estamos aquí para ayudarte.</p>
       </div>
-      <div class="mx-auto flex max-w-2xl flex-1 flex-col gap-4 sm:flex-row">
-        <div class="flex flex-1 items-start gap-3 rounded-xl border border-gray-200 p-5">
-          <div class="rounded-lg bg-[#F1F3F7] p-2">
+      <div class='mx-auto mt-4 flex max-w-2xl flex-1 flex-col gap-4 sm:flex-row'>
+        <a
+          href='mailto:hola@linguaedge.com'
+          class='flex flex-1 items-start gap-3 rounded-xl border border-gray-200 p-5 transition hover:border-[#1e2d5a]/30 hover:shadow-sm'
+        >
+          <div class='rounded-lg bg-[#F1F3F7] p-2'>
             <Mail />
           </div>
           <div>
-            <p class="text-xs font-medium text-gray-400">Email</p>
-            <p class="text-sm font-semibold text-gray-800">hello@yourcompany.com</p>
+            <p class='text-xs font-medium text-gray-400'>Correo</p>
+            <p class='text-sm font-semibold text-gray-800'>hola@linguaedge.com</p>
           </div>
-        </div>
-        <div class="flex flex-1 items-start gap-3 rounded-xl border border-gray-200 p-5">
-          <div class="rounded-lg bg-[#F1F3F7] p-2">
+        </a>
+        <a
+          href='tel:+18005464253'
+          class='flex flex-1 items-start gap-3 rounded-xl border border-gray-200 p-5 transition hover:border-[#1e2d5a]/30 hover:shadow-sm'
+        >
+          <div class='rounded-lg bg-[#F1F3F7] p-2'>
             <Phone />
           </div>
           <div>
-            <p class="text-xs font-medium text-gray-400">Phone</p>
-            <p class="text-sm font-semibold text-gray-800">+1 (987) 654-3210</p>
+            <p class='text-xs font-medium text-gray-400'>Teléfono</p>
+            <p class='text-sm font-semibold text-gray-800'>+1 (800) 546-4253</p>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </section>
 
-  <section class="bg-[#F5F5F5] px-6 py-14">
-    <div class="mx-auto max-w-2xl space-y-5 text-center">
-      <h2 class="text-2xl font-bold text-gray-900">Get the latest news and updates</h2>
-      <p class="text-sm text-gray-500">Subscribe to our newsletter and never miss an update. We promise no spam.</p>
-      <form id="newsletter-form" class="mx-auto flex max-w-md flex-col gap-3 sm:flex-row" novalidate>
-        <div class="flex flex-1 flex-col gap-1">
+  <!-- NEWSLETTER -->
+  <section class='bg-[#F5F5F5] px-6 py-14'>
+    <div class='mx-auto max-w-2xl space-y-5 text-center'>
+      <h2 class='text-2xl font-bold text-gray-900'>Recibe consejos de idiomas gratis cada semana</h2>
+      <p class='text-sm text-gray-500'>
+        Únete a más de 50,000 estudiantes que reciben lecciones semanales, consejos de estudio y descuentos exclusivos. Sin spam, nunca.
+      </p>
+      <form id='newsletter-form' class='mx-auto flex max-w-md flex-col gap-3 sm:flex-row' novalidate>
+        <div class='flex flex-1 flex-col gap-1'>
           <input
-            id="newsletter-email"
-            type="email"
-            placeholder="Enter your email"
-            class="flex-1 rounded border border-gray-300 bg-white px-4 py-2.5 text-sm focus:ring-2 focus:ring-[#1e2d5a]/30 focus:outline-none"
+            id='newsletter-email'
+            type='email'
+            placeholder='Tu correo electrónico'
+            class='flex-1 rounded border border-gray-300 bg-white px-4 py-2.5 text-sm focus:ring-2 focus:ring-[#1e2d5a]/30 focus:outline-none'
           />
-          <span id="error-newsletter" class="hidden text-left text-xs text-red-500">Please enter a valid email address.</span>
+          <span id='error-newsletter' class='hidden text-left text-xs text-red-500'>Por favor ingresa un correo electrónico válido.</span>
         </div>
-        <div class="flex flex-col items-start gap-1">
+        <div class='flex flex-col items-start gap-1'>
           <button
-            type="submit"
-            class="rounded bg-[#1e2d5a] px-5 py-2.5 text-sm font-semibold whitespace-nowrap text-white transition hover:bg-[#16224a]"
+            type='submit'
+            class='rounded bg-[#1e2d5a] px-5 py-2.5 text-sm font-semibold whitespace-nowrap text-white transition hover:bg-[#16224a]'
           >
-            Subscribe
+            Suscribirme gratis
           </button>
-          <span id="newsletter-success" class="hidden text-xs font-semibold text-green-600">Subscribed!</span>
+          <span id='newsletter-success' class='hidden text-xs font-semibold text-green-600'>¡Ya eres parte! Revisa tu bandeja.</span>
         </div>
       </form>
     </div>
   </section>
 
-  <footer class="border-t border-gray-200 bg-[#F5F5F5] px-6 py-8">
-    <div class="mx-auto flex max-w-5xl flex-col items-center gap-5">
-      <div class="flex gap-4">
-        <a href="#" class="rounded-lg bg-[#F1F3F7] p-2 transition hover:bg-gray-200">
+  <!-- FOOTER -->
+  <footer class='border-t border-gray-200 bg-[#F5F5F5] px-6 py-8'>
+    <div class='mx-auto flex max-w-5xl flex-col items-center gap-5'>
+      <div class='flex gap-4'>
+        <a
+          href='https://x.com'
+          target='_blank'
+          rel='noopener noreferrer'
+          aria-label='X (Twitter)'
+          class='rounded-lg bg-[#F1F3F7] p-2 transition hover:bg-gray-200'
+        >
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#1e2d5a"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            xmlns='http://www.w3.org/2000/svg'
+            width='18'
+            height='18'
+            viewBox='0 0 24 24'
+            fill='none'
+            stroke='#1e2d5a'
+            stroke-width='2'
+            stroke-linecap='round'
+            stroke-linejoin='round'
           >
-            <path d="M4 4l16 16M4 20 20 4"></path>
+            <path d='M4 4l16 16M4 20 20 4'></path>
           </svg>
         </a>
-        <a href="#" class="rounded-lg bg-[#F1F3F7] p-2 transition hover:bg-gray-200">
+        <a
+          href='https://facebook.com'
+          target='_blank'
+          rel='noopener noreferrer'
+          aria-label='Facebook'
+          class='rounded-lg bg-[#F1F3F7] p-2 transition hover:bg-gray-200'
+        >
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#1e2d5a"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            xmlns='http://www.w3.org/2000/svg'
+            width='18'
+            height='18'
+            viewBox='0 0 24 24'
+            fill='none'
+            stroke='#1e2d5a'
+            stroke-width='2'
+            stroke-linecap='round'
+            stroke-linejoin='round'
           >
-            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            <path d='M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z'></path>
           </svg>
         </a>
-        <a href="#" class="rounded-lg bg-[#F1F3F7] p-2 transition hover:bg-gray-200">
+        <a
+          href='https://instagram.com'
+          target='_blank'
+          rel='noopener noreferrer'
+          aria-label='Instagram'
+          class='rounded-lg bg-[#F1F3F7] p-2 transition hover:bg-gray-200'
+        >
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#1e2d5a"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            xmlns='http://www.w3.org/2000/svg'
+            width='18'
+            height='18'
+            viewBox='0 0 24 24'
+            fill='none'
+            stroke='#1e2d5a'
+            stroke-width='2'
+            stroke-linecap='round'
+            stroke-linejoin='round'
           >
-            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+            <rect width='20' height='20' x='2' y='2' rx='5' ry='5'></rect>
+            <path d='M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z'></path>
+            <line x1='17.5' x2='17.51' y1='6.5' y2='6.5'></line>
           </svg>
         </a>
-        <a href="#" class="rounded-lg bg-[#F1F3F7] p-2 transition hover:bg-gray-200">
+        <a
+          href='https://linkedin.com'
+          target='_blank'
+          rel='noopener noreferrer'
+          aria-label='LinkedIn'
+          class='rounded-lg bg-[#F1F3F7] p-2 transition hover:bg-gray-200'
+        >
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#1e2d5a"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            xmlns='http://www.w3.org/2000/svg'
+            width='18'
+            height='18'
+            viewBox='0 0 24 24'
+            fill='none'
+            stroke='#1e2d5a'
+            stroke-width='2'
+            stroke-linecap='round'
+            stroke-linejoin='round'
           >
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-            <rect width="4" height="12" x="2" y="9"></rect>
-            <circle cx="4" cy="4" r="2"></circle>
+            <path d='M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z'></path>
+            <rect width='4' height='12' x='2' y='9'></rect>
+            <circle cx='4' cy='4' r='2'></circle>
           </svg>
         </a>
-        <a href="#" class="rounded-lg bg-[#F1F3F7] p-2 transition hover:bg-gray-200">
+        <a
+          href='https://youtube.com'
+          target='_blank'
+          rel='noopener noreferrer'
+          aria-label='YouTube'
+          class='rounded-lg bg-[#F1F3F7] p-2 transition hover:bg-gray-200'
+        >
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18"
-            height="18"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="#1e2d5a"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            xmlns='http://www.w3.org/2000/svg'
+            width='18'
+            height='18'
+            viewBox='0 0 24 24'
+            fill='none'
+            stroke='#1e2d5a'
+            stroke-width='2'
+            stroke-linecap='round'
+            stroke-linejoin='round'
           >
             <path
-              d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"
+              d='M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z'
             ></path>
-            <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"></polygon>
+            <polygon points='9.75 15.02 15.5 12 9.75 8.98 9.75 15.02'></polygon>
           </svg>
         </a>
       </div>
 
-      <p class="text-xs text-gray-400">Copyright © 2025 Company — All rights reserved.</p>
+      <p class='text-xs text-gray-400'>Copyright © 2025 LinguaEdge — Todos los derechos reservados.</p>
 
-      <div class="flex gap-4 text-xs text-gray-500">
-        <a href="#" class="hover:underline">Terms and Conditions</a>
-        <span class="text-gray-300">|</span>
-        <a href="#" class="hover:underline">Privacy Policy</a>
+      <div class='flex gap-4 text-xs text-gray-500'>
+        <button data-policy='terms' class='hover:underline'>Términos y Condiciones</button>
+        <span class='text-gray-300'>|</span>
+        <button data-policy='privacy' class='hover:underline'>Política de Privacidad</button>
       </div>
     </div>
   </footer>
+
+  <!-- MODAL: VER DEMOSTRACIÓN -->
+  <div id='demo-modal' class='fixed inset-0 z-50 hidden items-center justify-center bg-black/60 p-4 backdrop-blur-sm'>
+    <div class='relative w-full max-w-lg rounded-2xl bg-white p-8 shadow-2xl'>
+      <button
+        id='close-demo-modal'
+        aria-label='Cerrar'
+        class='absolute top-4 right-4 rounded-full p-1.5 text-gray-400 transition hover:bg-gray-100 hover:text-gray-700'
+      >
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          width='18'
+          height='18'
+          viewBox='0 0 24 24'
+          fill='none'
+          stroke='currentColor'
+          stroke-width='2'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+        >
+          <path d='M18 6 6 18M6 6l12 12'></path>
+        </svg>
+      </button>
+      <p class='text-xs font-semibold tracking-widest text-[#1e2d5a] uppercase'>Cómo funciona</p>
+      <h3 class='mt-1 text-2xl font-bold text-gray-900'>El método LinguaEdge</h3>
+      <p class='mt-2 text-sm text-gray-500'>Un enfoque probado en 3 pasos utilizado por más de 2 millones de estudiantes en todo el mundo.</p>
+      <div class='mt-6 space-y-3'>
+        <div class='flex items-start gap-4 rounded-xl bg-[#F5F5F5] p-4'>
+          <span class='flex size-8 shrink-0 items-center justify-center rounded-full bg-[#1e2d5a] text-xs font-bold text-white'>1</span>
+          <div>
+            <p class='text-sm font-semibold text-gray-800'>Evalúa tu nivel</p>
+            <p class='mt-0.5 text-xs text-gray-500'>
+              Haz un test de nivel de 5 minutos. Te asignaremos el programa e instructor indicado desde el primer día.
+            </p>
+          </div>
+        </div>
+        <div class='flex items-start gap-4 rounded-xl bg-[#F5F5F5] p-4'>
+          <span class='flex size-8 shrink-0 items-center justify-center rounded-full bg-[#1e2d5a] text-xs font-bold text-white'>2</span>
+          <div>
+            <p class='text-sm font-semibold text-gray-800'>Clases en vivo + práctica con IA</p>
+            <p class='mt-0.5 text-xs text-gray-500'>
+              Únete a sesiones semanales en vivo con tutores nativos y practica diariamente con nuestro asistente de conversación con IA.
+            </p>
+          </div>
+        </div>
+        <div class='flex items-start gap-4 rounded-xl bg-[#F5F5F5] p-4'>
+          <span class='flex size-8 shrink-0 items-center justify-center rounded-full bg-[#1e2d5a] text-xs font-bold text-white'>3</span>
+          <div>
+            <p class='text-sm font-semibold text-gray-800'>Obtén tu certificado</p>
+            <p class='mt-0.5 text-xs text-gray-500'>Completa tu programa y obtén un certificado de idioma reconocido internacionalmente.</p>
+          </div>
+        </div>
+      </div>
+      <a
+        href='#cursos'
+        id='demo-cta'
+        class='mt-6 flex w-full items-center justify-center gap-2 rounded-lg bg-[#1e2d5a] px-5 py-3 text-sm font-semibold text-white transition hover:bg-[#16224a]'
+      >
+        Ver cursos <ArrowRight />
+      </a>
+    </div>
+  </div>
+
+  <!-- MODAL: INSCRIPCIÓN AL CURSO -->
+  <div id='course-modal' class='fixed inset-0 z-50 hidden items-center justify-center bg-black/60 p-4 backdrop-blur-sm'>
+    <div class='relative w-full max-w-md rounded-2xl bg-white p-8 shadow-2xl'>
+      <button
+        id='close-course-modal'
+        aria-label='Cerrar'
+        class='absolute top-4 right-4 rounded-full p-1.5 text-gray-400 transition hover:bg-gray-100 hover:text-gray-700'
+      >
+        <svg
+          xmlns='http://www.w3.org/2000/svg'
+          width='18'
+          height='18'
+          viewBox='0 0 24 24'
+          fill='none'
+          stroke='currentColor'
+          stroke-width='2'
+          stroke-linecap='round'
+          stroke-linejoin='round'
+        >
+          <path d='M18 6 6 18M6 6l12 12'></path>
+        </svg>
+      </button>
+      <span id='modal-category' class='text-xs font-semibold tracking-widest text-[#1e2d5a] uppercase'>Inglés</span>
+      <h3 id='modal-title' class='mt-1 text-2xl font-bold text-gray-900'>Nombre del curso</h3>
+      <div class='mt-3 flex gap-2'>
+        <span id='modal-level' class='rounded-full bg-[#F1F3F7] px-3 py-1 text-xs font-medium text-gray-600'>A1–A2</span>
+        <span id='modal-duration' class='rounded-full bg-[#F1F3F7] px-3 py-1 text-xs font-medium text-gray-600'>3 meses</span>
+      </div>
+      <p id='modal-desc' class='mt-4 text-sm leading-relaxed text-gray-600'>Descripción del curso.</p>
+      <div class='mt-6 flex gap-3'>
+        <button
+          id='modal-enroll-btn'
+          class='flex-1 rounded-lg bg-[#1e2d5a] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#16224a]'
+        >
+          Iniciar prueba gratis
+        </button>
+        <button
+          id='close-course-btn'
+          class='rounded-lg border border-gray-300 px-5 py-2.5 text-sm font-semibold text-gray-700 transition hover:bg-gray-50'
+        >
+          Ahora no
+        </button>
+      </div>
+    </div>
+  </div>
 </Layout>
 
 <script>
-  // ── FAVORITES ──────────────────────────────────────────────────────────────
+  // ── TOAST ──────────────────────────────────────────────────────────────────
+
+  function showToast(msg: string): void {
+    const toast = document.createElement("div")
+    toast.className =
+      "fixed bottom-6 left-1/2 z-[200] -translate-x-1/2 rounded-xl bg-[#1e2d5a] px-5 py-3 text-sm font-medium text-white shadow-xl transition-opacity"
+    toast.textContent = msg
+    document.body.appendChild(toast)
+    setTimeout(() => {
+      toast.style.opacity = "0"
+      setTimeout(() => toast.remove(), 300)
+    }, 2700)
+  }
+
+  // ── FAVORITOS ──────────────────────────────────────────────────────────────
 
   const LS_KEY = "favServices"
 
@@ -348,7 +537,7 @@ const { categories, items: services } = servicesData
     const icon = btn.querySelector(".fav-icon") as SVGElement | null
     if (!icon) return
     icon.setAttribute("fill", active ? "white" : "none")
-    btn.setAttribute("aria-label", active ? "Remove from favorites" : "Add to favorites")
+    btn.setAttribute("aria-label", active ? "Quitar de favoritos" : "Agregar a favoritos")
   }
 
   function buildFavoritesGrid(): void {
@@ -366,13 +555,25 @@ const { categories, items: services } = servicesData
       if (!original) return
 
       const clone = original.cloneNode(true) as HTMLElement
-      // Wire up the heart button on the clone
       const cloneBtn = clone.querySelector<HTMLButtonElement>(".fav-btn")
       if (cloneBtn) {
         setFavButtonState(cloneBtn, true)
         cloneBtn.addEventListener("click", (e) => {
           e.stopPropagation()
           toggleFavorite(id)
+        })
+      }
+      const cloneEnroll = clone.querySelector<HTMLButtonElement>(".enroll-btn")
+      if (cloneEnroll) {
+        cloneEnroll.addEventListener("click", (e) => {
+          e.stopPropagation()
+          openCourseModal({
+            title: clone.dataset.title ?? "",
+            category: clone.dataset.category ?? "",
+            level: clone.dataset.level ?? "",
+            duration: clone.dataset.duration ?? "",
+            description: clone.dataset.description ?? ""
+          })
         })
       }
       grid.appendChild(clone)
@@ -390,7 +591,6 @@ const { categories, items: services } = servicesData
     }
     saveFavorites(favs)
 
-    // Update all main-grid heart buttons for this id
     document.querySelectorAll<HTMLButtonElement>(`.fav-btn[data-id="${id}"]`).forEach((btn) => {
       setFavButtonState(btn, favs.includes(id))
     })
@@ -398,7 +598,6 @@ const { categories, items: services } = servicesData
     buildFavoritesGrid()
   }
 
-  // Init favorites on page load
   document.querySelectorAll<HTMLButtonElement>(".service-card .fav-btn").forEach((btn) => {
     const id = Number(btn.dataset.id)
     setFavButtonState(btn, isFavorite(id))
@@ -410,11 +609,11 @@ const { categories, items: services } = servicesData
 
   buildFavoritesGrid()
 
-  // ── CATEGORY FILTER ────────────────────────────────────────────────────────
+  // ── FILTRO POR CATEGORÍA ───────────────────────────────────────────────────
 
   document.querySelectorAll<HTMLButtonElement>(".category-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
-      const selected = btn.dataset.category ?? "All"
+      const selected = btn.dataset.category ?? "Todos"
 
       document.querySelectorAll<HTMLButtonElement>(".category-btn").forEach((b) => {
         b.classList.remove("border-b-2", "border-gray-800", "text-gray-900")
@@ -424,9 +623,114 @@ const { categories, items: services } = servicesData
       btn.classList.remove("text-gray-400")
 
       document.querySelectorAll<HTMLElement>(".service-card").forEach((card) => {
-        const show = selected === "All" || card.dataset.category === selected
+        const show = selected === "Todos" || card.dataset.category === selected
         card.style.display = show ? "" : "none"
       })
+    })
+  })
+
+  // ── MODAL: DEMOSTRACIÓN ────────────────────────────────────────────────────
+
+  const demoModal = document.getElementById("demo-modal")
+  const demoBtn = document.getElementById("demo-btn")
+  const closeDemoModalBtn = document.getElementById("close-demo-modal")
+  const demoCta = document.getElementById("demo-cta")
+
+  function openDemoModal(): void {
+    demoModal?.classList.remove("hidden")
+    demoModal?.classList.add("flex")
+  }
+
+  function closeDemoModalFn(): void {
+    demoModal?.classList.remove("flex")
+    demoModal?.classList.add("hidden")
+  }
+
+  demoBtn?.addEventListener("click", openDemoModal)
+  closeDemoModalBtn?.addEventListener("click", closeDemoModalFn)
+  demoCta?.addEventListener("click", closeDemoModalFn)
+  demoModal?.addEventListener("click", (e) => {
+    if (e.target === demoModal) closeDemoModalFn()
+  })
+
+  // ── MODAL: INSCRIPCIÓN ─────────────────────────────────────────────────────
+
+  const courseModal = document.getElementById("course-modal")
+  const closeCourseModalBtn = document.getElementById("close-course-modal")
+  const closeCourseBtn = document.getElementById("close-course-btn")
+  const modalEnrollBtn = document.getElementById("modal-enroll-btn")
+
+  interface CourseData {
+    title: string
+    category: string
+    level: string
+    duration: string
+    description: string
+  }
+
+  function openCourseModal(data: CourseData): void {
+    const title = document.getElementById("modal-title")
+    const category = document.getElementById("modal-category")
+    const level = document.getElementById("modal-level")
+    const duration = document.getElementById("modal-duration")
+    const desc = document.getElementById("modal-desc")
+
+    if (title) title.textContent = data.title
+    if (category) category.textContent = data.category
+    if (level) level.textContent = data.level
+    if (duration) duration.textContent = data.duration
+    if (desc) desc.textContent = data.description
+
+    courseModal?.classList.remove("hidden")
+    courseModal?.classList.add("flex")
+  }
+
+  function closeCourseModalFn(): void {
+    courseModal?.classList.remove("flex")
+    courseModal?.classList.add("hidden")
+  }
+
+  closeCourseModalBtn?.addEventListener("click", closeCourseModalFn)
+  closeCourseBtn?.addEventListener("click", closeCourseModalFn)
+  courseModal?.addEventListener("click", (e) => {
+    if (e.target === courseModal) closeCourseModalFn()
+  })
+
+  document.querySelectorAll<HTMLButtonElement>(".service-card .enroll-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.stopPropagation()
+      const card = btn.closest<HTMLElement>(".service-card")
+      if (!card) return
+      openCourseModal({
+        title: card.dataset.title ?? "",
+        category: card.dataset.category ?? "",
+        level: card.dataset.level ?? "",
+        duration: card.dataset.duration ?? "",
+        description: card.dataset.description ?? ""
+      })
+    })
+  })
+
+  // "Iniciar prueba gratis" → cierra modal + scroll al formulario
+  modalEnrollBtn?.addEventListener("click", () => {
+    closeCourseModalFn()
+    document.getElementById("contact-form")?.scrollIntoView({ behavior: "smooth" })
+  })
+
+  // Cerrar modales con Escape
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      closeDemoModalFn()
+      closeCourseModalFn()
+    }
+  })
+
+  // ── TÉRMINOS Y PRIVACIDAD ──────────────────────────────────────────────────
+
+  document.querySelectorAll<HTMLButtonElement>("[data-policy]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const isTerms = btn.dataset.policy === "terms"
+      showToast(isTerms ? "Términos y Condiciones próximamente disponibles." : "Política de Privacidad próximamente disponible.")
     })
   })
 
@@ -456,7 +760,6 @@ const { categories, items: services } = servicesData
     }
   }
 
-  // Clear field error on input
   function clearOnInput(inputId: string, errorId: string): void {
     const input = document.getElementById(inputId)
     input?.addEventListener("input", () => setFieldError(inputId, errorId, false))
@@ -466,7 +769,7 @@ const { categories, items: services } = servicesData
   clearOnInput("contact-email", "error-email")
   clearOnInput("newsletter-email", "error-newsletter")
 
-  // Phone auto-format → (xxx) xxx-xxxx
+  // Formato automático de teléfono → (xxx) xxx-xxxx
   const phoneInput = document.getElementById("contact-phone") as HTMLInputElement | null
   phoneInput?.addEventListener("input", () => {
     setFieldError("contact-phone", "error-phone", false)
@@ -486,7 +789,7 @@ const { categories, items: services } = servicesData
     phoneInput.value = `(${digits.slice(0, 3)}) ${digits.slice(3, 6)}-${digits.slice(6)}`
   })
 
-  // ── CONTACT FORM VALIDATION ────────────────────────────────────────────────
+  // ── FORMULARIO DE CONTACTO ─────────────────────────────────────────────────
 
   document.getElementById("contact-form")?.addEventListener("submit", (e) => {
     e.preventDefault()
@@ -516,7 +819,7 @@ const { categories, items: services } = servicesData
     setFieldError("contact-phone", "error-phone", false)
   })
 
-  // ── NEWSLETTER FORM VALIDATION ─────────────────────────────────────────────
+  // ── NEWSLETTER ─────────────────────────────────────────────────────────────
 
   document.getElementById("newsletter-form")?.addEventListener("submit", (e) => {
     e.preventDefault()

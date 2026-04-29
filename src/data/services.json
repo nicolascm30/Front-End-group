@@ -1,33 +1,45 @@
 {
-  "categories": ["All", "Design", "Development", "Marketing"],
+  "categories": ["Todos", "Inglés", "Español", "Francés"],
   "items": [
     {
       "id": 1,
-      "category": "Development",
-      "title": "Web Development",
-      "image": "https://placehold.co/260x365",
-      "alt": "Web Development service"
+      "category": "Inglés",
+      "title": "Inglés para principiantes",
+      "level": "A1 – A2",
+      "duration": "3 meses",
+      "description": "Construye una base sólida desde cero. Cubre vocabulario cotidiano, gramática básica y práctica de pronunciación con tutores nativos en vivo.",
+      "image": "/english.png",
+      "alt": "Curso de inglés para principiantes"
     },
     {
       "id": 2,
-      "category": "Design",
-      "title": "UI/UX Design",
-      "image": "https://placehold.co/260x365",
-      "alt": "UI/UX Design service"
+      "category": "Inglés",
+      "title": "Inglés de negocios",
+      "level": "B2 – C1",
+      "duration": "4 meses",
+      "description": "Domina la comunicación profesional: correos, presentaciones, negociaciones y redacción corporativa con coaches especializados.",
+      "image": "/business-english.png",
+      "alt": "Curso de inglés de negocios"
     },
     {
       "id": 3,
-      "category": "Marketing",
-      "title": "Digital Marketing",
-      "image": "https://placehold.co/260x365",
-      "alt": "Digital Marketing service"
+      "category": "Español",
+      "title": "Español conversacional",
+      "level": "A2 – B1",
+      "duration": "3 meses",
+      "description": "Habla con naturalidad desde el primer día con práctica inmersiva de conversación y tutores nativos de Latinoamérica.",
+      "image": "/spanish.png",
+      "alt": "Curso de español conversacional"
     },
     {
       "id": 4,
-      "category": "Development",
-      "title": "Mobile Apps",
-      "image": "https://placehold.co/260x365",
-      "alt": "Mobile Apps service"
+      "category": "Francés",
+      "title": "Francés esencial",
+      "level": "A1 – B1",
+      "duration": "4 meses",
+      "description": "De bonjour a conversaciones completas — aprende francés a tu ritmo con instructores certificados y ejercicios interactivos.",
+      "image": "/french.png",
+      "alt": "Curso de francés esencial"
     }
   ]
 }
